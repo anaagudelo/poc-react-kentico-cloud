@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 import { client } from '../../src/config';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 
+let unsubscribeSubject = new Subject();
 
 class ArticleListing extends Component {
   constructor(props) {
@@ -19,6 +23,8 @@ class ArticleListing extends Component {
       .type("article")
       .elementsParameter(["url_pattern", "title"])
       .getObservable()
+      // unsubscribe when unsubscribeSubject fires
+      .pipe(takeUntil(unsubscribeSubject))
       .subscribe(response => {
         console.log(response.items);
         this.setState({
@@ -26,6 +32,11 @@ class ArticleListing extends Component {
           articles: response.items
         });
       });
+  }
+
+  unsubscribe() {
+    unsubscribeSubject.next();
+    unsubscribeSubject.complete();
   }
 
   componentDidMount() {
