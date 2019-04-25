@@ -49,11 +49,12 @@ class ArticleListing extends Component {
     if (this.state.loaded) {
         return (
           <div>
+            <br></br>
           <h1 className="title-tab">Articles Listing</h1>
           <ul>
             {this.state.articles.map((article) => {
               return (
-                <div className="col-md-12 col-lg-6 tag"  key={article.url_pattern.value}>
+                <div className="col-md-12 col-lg-2 tag"  key={article.url_pattern.value}>
                   <Link to={`/post/${article.elements.url_pattern.value}`}>
                     {article.title.value}
                   </Link>
