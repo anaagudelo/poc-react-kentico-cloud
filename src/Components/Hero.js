@@ -16,14 +16,14 @@
 //         <p>{this.props.summary}</p>
 //         <div dangerouslySetInnerHTML={{ __html: this.props.bodyCopy }} />
 //         </div>
-        
+
 //       </article>
 //     );
 //   }
 // }
 // export default Hero;
-import React from 'react';
 
+import React from 'react';
 
 const Hero = props => {
   return (
@@ -37,3 +37,4 @@ const Hero = props => {
 };
 
 export default Hero;
+

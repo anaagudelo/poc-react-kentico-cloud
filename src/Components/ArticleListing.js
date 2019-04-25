@@ -46,20 +46,28 @@ class ArticleListing extends Component {
   }
 
   render() {
-    console.log("estos son los articulos",this.state.articles)
     if (this.state.loaded) {
         return (
+          <div>
+          <h1 className="title-tab">Articles Listing</h1>
           <ul>
             {this.state.articles.map((article) => {
               return (
-                <li key={article.url_pattern.value}>
+                <div className="col-md-12 col-lg-6 tag"  key={article.url_pattern.value}>
                   <Link to={`/post/${article.elements.url_pattern.value}`}>
                     {article.title.value}
                   </Link>
-                </li>
+                  <div className="article-tile-content">
+                <h2 className="h4">
+                </h2>
+                <p className="article-tile-text">Resumen</p>
+              </div>
+                </div>
+                
               )
             })}
           </ul>
+          </div>
         );
       } else {
         return (
@@ -68,6 +76,7 @@ class ArticleListing extends Component {
             </div>
         )
     }
+    
   }
 }
 
