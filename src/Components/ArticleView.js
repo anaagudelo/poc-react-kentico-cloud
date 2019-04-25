@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import { client } from "../../src/config";
+
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { resolveItemInRichText } from "../itemResolver";
 import { resolveContentLink } from "../linkResolver";
+import { DeliveryClient } from 'kentico-cloud-delivery';
+import { defaultProjectId } from "../Utilities/configProjectId";
 
+const Client = new DeliveryClient({ projectId: defaultProjectId})
 let unsubscribeSubject = new Subject();
 
 class ArticleView extends Component {
@@ -19,7 +22,7 @@ class ArticleView extends Component {
     };
   }
   fetchArticle(slug) {
-    client
+    Client
       .items()
       .equalsFilter("elements.url_pattern", slug)
       .depthParameter(1)

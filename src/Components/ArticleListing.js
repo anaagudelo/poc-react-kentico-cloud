@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
-import { client } from '../../src/config';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { DeliveryClient } from 'kentico-cloud-delivery';
+import { defaultProjectId } from "../Utilities/configProjectId";
+
+const Client = new DeliveryClient({ projectId: defaultProjectId})
 
 
 let unsubscribeSubject = new Subject();
@@ -18,7 +20,7 @@ class ArticleListing extends Component {
   }
 
   fetchArticles() {
-    client
+    Client
       .items()
       .type("article")
       .elementsParameter(["url_pattern", "title"])
@@ -44,6 +46,7 @@ class ArticleListing extends Component {
   }
 
   render() {
+    console.log("estos son los articulos",this.state.articles)
     if (this.state.loaded) {
         return (
           <ul>
@@ -51,30 +54,14 @@ class ArticleListing extends Component {
               return (
                 <li key={article.url_pattern.value}>
                   <Link to={`/post/${article.elements.url_pattern.value}`}>
-                    {article.title.text}
+                    {article.title.value}
                   </Link>
                 </li>
               )
             })}
           </ul>
         );
-      } 
-       if (this.state.loaded) {
-      return (
-        <ul>
-          {this.state.articles.map((article) => {
-            return (
-              <li key={article.url_pattern.value}>
-                <Link to={`/post/${article.elements.url_pattern.value}`}>
-                  {article.title.text}
-                </Link>
-              </li>
-            )
-          })}
-
-        </ul>
-      );
-    } else {
+      } else {
         return (
           <div>
             Loading...
