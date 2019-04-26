@@ -34,15 +34,15 @@ class HeroStore extends Component {
     }
     console.log("estas son las props que vienen del Heromodl",this.state.hero)
     const { title, marketing_message } = this.state.hero;
-    // const teaserAlt = this.state.hero.teaserImage.assets[0].description;
-    // const teaserUrl = this.state.hero.teaserImage.assets[0].url;
+    const teaserAlt = this.state.hero.image.assets[0].description;
+    const teaserUrl = this.state.hero.image.assets[0].url;
 
     return (
       <Hero
         title={title.value}
         message={marketing_message.value}
-        // teaserImageAlt={teaserAlt}
-        // teaserImageSrc={teaserUrl}
+        teaserImageAlt={teaserAlt}
+        teaserImageSrc={teaserUrl}
       />
     );
   }

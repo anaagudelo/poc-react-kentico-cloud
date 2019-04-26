@@ -6,9 +6,10 @@ class Hero extends Component {
     return (
       <div className="hero">
       <img
-          src="https://assets-us-01.kc-usercontent.com:443/2de25277-7ba8-0068-2a7a-58ef97ce76fe/55caecc2-400c-4ee3-91c3-0f7f067414ec/banner-default.jpg"
+         alt={this.props.teaserImageAlt}
+         src={this.props.teaserImageSrc}
         /> 
-        <div claName="heroDetails">
+        <div className="heroDetails">
         <h2 className="banner-heading">{this.props.title}</h2>
         <p className="banner-text"> {this.props.message} </p> 
         </div>

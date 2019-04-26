@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 import { DeliveryClient } from "kentico-cloud-delivery";
@@ -51,7 +50,7 @@ class ManuItems extends Component {
                   {this.state.menuItems.map(ManuItem => {
                     return (
                       <li key={ManuItem.url_slug.value}>
-                        <a>{ManuItem.elements.title.value}</a>
+                        <a href="/">{ManuItem.elements.title.value}</a>
                       </li>
                     );
                   })}

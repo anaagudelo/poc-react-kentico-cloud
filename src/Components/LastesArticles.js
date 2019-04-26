@@ -48,9 +48,9 @@ class LatestArticles extends Component {
       return <div className="row" />;
     }
 
-    let formatDate = value => {
-      return dateFormat(value, "mmmm d");
-    };
+    // let formatDate = value => {
+    //   return dateFormat(value, "mmmm d");
+    // };
 
     var otherArticles = this.state.articles.slice(1).map((article, index) => {
       let title =
@@ -58,37 +58,33 @@ class LatestArticles extends Component {
           ? article.title.value
           : null;
 
-    //   let imageLink =
-    //     article.teaserImage.value[0] !== undefined ? (
-    //       <img
-    //         alt={"Article " + title}
-    //         className="article-tile-image"
-    //         src={article.teaserImage.value[0].url}
-    //         title={"Article " + title}
-    //       />
-    //     ) : (
-    //       <div className="article-tile-image placeholder-tile-image">
-    //         {null}
-    //       </div>
-    //     );
-    //   let postDate = formatDate(article.postDate.value);
+      let imageLink =
+        article.teaser_image.value[0] !== undefined ? (
+          <img
+            alt={"Article " + title}
+            className="article-tile-image"
+            src={article.teaser_image.value[0].url}
+            title={"Article " + title}
+          />
+        ) : (
+          <div className="article-tile-image placeholder-tile-image">
+            {null}
+          </div>
+        );
+    //   let postDate = formatDate(article.post_date.value);
       let summary =
         article.summary.value.trim().length > 0
           ? article.summary.value
-          : this.props.t("noSummaryValue");
-
-      // let link = `/${this.props.language.toLowerCase()}/articles/${
-      //   article.system.id
-      // }`;
+          : null;
 
       return (
         <div className="col-md-3" key={index}>
           <div className="article-tile">
-            {/* <li>{imageLink}</li>
-            <div className="article-tile-date">{postDate}</div> */}
+            {imageLink}
+            {/* <div className="article-tile-date">{postDate}</div> */}
             <div className="article-tile-content">
               <h2 className="h4">
-                {title}
+                <a href="/">{title}</a>
               </h2>
               <p className="article-tile-text">{summary}</p>
             </div>
@@ -104,26 +100,22 @@ class LatestArticles extends Component {
       article.title.value.trim().length > 0 ? article.title.value : null;
       console.log("este es el title",title)
 
-    // let imageLink =
-    //   article.teaserImage.value[0] !== undefined ? (
-    //     <img
-    //       alt={"Article " + title}
-    //       className="article-tile-image"
-    //       src={article.teaserImage.value[0].url}
-    //       title={"Article " + title}
-    //     />
-    //   ) : (
-    //     <div className="article-tile-image placeholder-tile-image">{null}</div>
-    //   );
+    let imageLink =
+      article.teaser_image.value[0] !== undefined ? (
+        <img
+          alt={"Article " + title}
+          className="article-tile-image"
+          src={article.teaser_image.value[0].url}
+          title={"Article " + title}
+        />
+      ) : (
+        <div className="article-tile-image placeholder-tile-image">{null}</div>
+      );
+    // let postDate = formatDate(article.post_date.value);
 
-    // let postDate = formatDate(article.postDate.value);
+    let summary =
+      article.summary.value.trim().length > 0 ? article.summary.value : null;
 
-    // let summary =
-    //   article.summary.value.trim().length > 0 ? article.summary.value : null;
-
-    // let link = `/${this.props.language.toLowerCase()}/articles/${
-    //     article.system.id
-    //   }`;
 
     let tabTitle = "Article Listing";
 
@@ -132,21 +124,21 @@ class LatestArticles extends Component {
       <br/>
         <h1 className="title-tab">{tabTitle}</h1>
         <br/>
-        {/* <div className="article-tile article-tile-large">
+        <div className="article-tile article-tile-large">
           <div className="col-md-12 col-lg-6">
-            <li>{imageLink}</li>
+            {imageLink}
           </div>
           <div className="col-md-12 col-lg-6">
-            <div className="article-tile-date">{postDate}</div>
+            {/* <div className="article-tile-date">{postDate}</div> */}
             <div className="article-tile-content">
               <h2>
-                <li>{title}</li>
+              <a href="/">{title}</a>
               </h2>
               <p className="article-tile-text lead-paragraph">{summary}</p>
             </div>
           </div>
         </div>
-         */}
+        
         {otherArticles}
       </div>
     );
