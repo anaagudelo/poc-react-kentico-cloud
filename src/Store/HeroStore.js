@@ -1,5 +1,4 @@
 import Hero from "../Components/Hero";
-
 import React, { Component } from "react";
 import config from "../Client";
 import withDeliveryClient from "../Utilities/withDeliveryClient";
