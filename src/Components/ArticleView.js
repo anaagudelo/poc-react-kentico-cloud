@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
-import { resolveItemInRichText } from "../itemResolver";
-import { resolveContentLink } from "../linkResolver";
+import { resolveItemInRichText } from "../Utilities/itemResolver";
+import { resolveContentLink } from "../Utilities/linkResolver";
 import { DeliveryClient } from 'kentico-cloud-delivery';
 import { defaultProjectId } from "../Utilities/configProjectId";
 

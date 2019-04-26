@@ -23,12 +23,12 @@ class ArticleListing extends Component {
     Client
       .items()
       .type("article")
-      .elementsParameter(["url_pattern", "title"])
+      .elementsParameter(["title"])
       .getObservable()
       // unsubscribe when unsubscribeSubject fires
       .pipe(takeUntil(unsubscribeSubject))
       .subscribe(response => {
-        console.log(response.items);
+        console.log("Esto es lo que viene de fecthArticles",response.items);
         this.setState({
           loaded: true,
           articles: response.items
@@ -53,9 +53,10 @@ class ArticleListing extends Component {
           <h1 className="title-tab">Articles Listing</h1>
           <ul>
             {this.state.articles.map((article) => {
+              //  console.log("estas son las props que vienen del ArticleLinsting",article)
               return (
-                <div className="col-md-12 col-lg-2 tag"  key={article.url_pattern.value}>
-                  <Link to={`/post/${article.elements.url_pattern.value}`}>
+                <div className="col-md-12 col-lg-2 tag"  key={article.title.value}>
+                  <Link to={`/post/${article.elements.title.value}`}>
                     {article.title.value}
                   </Link>
                   <div className="article-tile-content">

@@ -26,7 +26,7 @@ class ManuItems extends Component {
       // unsubscribe when unsubscribeSubject fires
       .pipe(takeUntil(unsubscribeSubject))
       .subscribe(response => {
-        console.log(response.items);
+        // console.log(response.items);
         this.setState({
           menuItems: response.items
         });
