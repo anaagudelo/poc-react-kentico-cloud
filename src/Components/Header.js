@@ -56,18 +56,18 @@ class ManuItems extends Component {
                   })}
                 </ul>
               </nav>
-              <div className="additional-menu-buttons user-menu">
+              {/* <div className="additional-menu-buttons user-menu">
                 <nav>
                   <ul className="dropdown-items-list dropdown-desktop-visible">
                     <li>
-                      <a>English</a>
+                      <a href="/">English</a>
                     </li>
                     <li>
-                      <a>Español</a>
+                      <a href="/">Español</a>
                     </li>
                   </ul>
                 </nav>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="header-row">

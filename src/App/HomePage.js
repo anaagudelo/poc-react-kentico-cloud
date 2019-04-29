@@ -10,7 +10,7 @@ class HomePage extends React.Component {
       <div className="application-content">
       <Header/>
       <div className="container">
-      <HeroStore codeName="home_page_hero_unit"/>
+        <HeroStore codeName="home_page_hero_unit"/>
         <LatestArticles language={this.props.language} />
         </div>
       </div>

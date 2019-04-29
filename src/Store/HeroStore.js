@@ -15,6 +15,7 @@ class HeroStore extends Component {
     // console.log("esto es this.props.clien",this.props.client)
     this.subscription = this.props.client
       .item(this.props.codeName)
+      .languageParameter('es-ES')
       .getObservable()
       .subscribe(response => {
         this.setState({
