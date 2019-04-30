@@ -12,10 +12,11 @@ class HeroStore extends Component {
   }
 
   componentDidMount() {
-    // console.log("esto es this.props.clien",this.props.client)
+    console.log("esto es this.props.clien",this.props.client)
     this.subscription = this.props.client
       .item(this.props.codeName)
       .languageParameter('es-ES')
+      //.languageParameter('en-US')
       .getObservable()
       .subscribe(response => {
         this.setState({

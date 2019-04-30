@@ -94,11 +94,9 @@ class LatestArticles extends Component {
     });
 
     let article = this.state.articles[0];
-    console.log("este es el article",article)
 
     let title =
       article.title.value.trim().length > 0 ? article.title.value : null;
-      console.log("este es el title",title)
 
     let imageLink =
       article.teaser_image.value[0] !== undefined ? (
