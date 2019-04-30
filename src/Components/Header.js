@@ -25,7 +25,6 @@ class ManuItems extends Component {
       // unsubscribe when unsubscribeSubject fires
       .pipe(takeUntil(unsubscribeSubject))
       .subscribe(response => {
-        // console.log(response.items);
         this.setState({
           menuItems: response.items
         });
@@ -56,18 +55,6 @@ class ManuItems extends Component {
                   })}
                 </ul>
               </nav>
-              {/* <div className="additional-menu-buttons user-menu">
-                <nav>
-                  <ul className="dropdown-items-list dropdown-desktop-visible">
-                    <li>
-                      <a href="/">English</a>
-                    </li>
-                    <li>
-                      <a href="/">Español</a>
-                    </li>
-                  </ul>
-                </nav>
-              </div> */}
             </div>
           </div>
           <div className="header-row">

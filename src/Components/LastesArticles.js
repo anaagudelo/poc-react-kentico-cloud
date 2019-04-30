@@ -48,9 +48,6 @@ class LatestArticles extends Component {
       return <div className="row" />;
     }
 
-    // let formatDate = value => {
-    //   return dateFormat(value, "mmmm d");
-    // };
 
     var otherArticles = this.state.articles.slice(1).map((article, index) => {
       let title =
@@ -71,7 +68,7 @@ class LatestArticles extends Component {
             {null}
           </div>
         );
-    //   let postDate = formatDate(article.post_date.value);
+      let postDate = article.post_date.value;
       let summary =
         article.summary.value.trim().length > 0
           ? article.summary.value
@@ -81,7 +78,7 @@ class LatestArticles extends Component {
         <div className="col-md-3" key={index}>
           <div className="article-tile">
             {imageLink}
-            {/* <div className="article-tile-date">{postDate}</div> */}
+            <div className="article-tile-date">{postDate}</div>
             <div className="article-tile-content">
               <h2 className="h4">
                 <a href="/">{title}</a>
@@ -109,7 +106,7 @@ class LatestArticles extends Component {
       ) : (
         <div className="article-tile-image placeholder-tile-image">{null}</div>
       );
-    // let postDate = formatDate(article.post_date.value);
+    let postDate = article.post_date.value;
 
     let summary =
       article.summary.value.trim().length > 0 ? article.summary.value : null;
@@ -127,7 +124,7 @@ class LatestArticles extends Component {
             {imageLink}
           </div>
           <div className="col-md-12 col-lg-6">
-            {/* <div className="article-tile-date">{postDate}</div> */}
+            <div className="article-tile-date">{postDate}</div>
             <div className="article-tile-content">
               <h2>
               <a href="/">{title}</a>

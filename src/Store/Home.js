@@ -1,17 +1,13 @@
 import {Client} from '../Client2'
 import { takeUntil } from "rxjs/operators";
 import { Subject} from "rxjs";
-import {
-  initLanguageCodeObject,
-  defaultLanguage
-} from "../Utilities/LenguageCodes";
 import { spinnerService } from "@chevtek/react-spinners";
 
 
 let unsubscribe = new Subject();
 let changeListeners = [];
 const resetStore = () => ({
-  metaData: initLanguageCodeObject()
+  metaData: {}
 });
 let { metaData } = resetStore();
 
@@ -21,7 +17,7 @@ let notifyChange = () => {
   });
 };
 
-let fetchMetaData = language => {
+let fetchMetaData =()=> {
   let query = Client.items()
     .type('home')
     .elementsParameter([
@@ -37,30 +33,23 @@ let fetchMetaData = language => {
       'metadata__twitter_image'
     ]);
 
-  if (language) {
-    query.languageParameter(language);
-  }
 
   query
     .getObservable()
     .pipe(takeUntil(unsubscribe))
     .subscribe(response => {
-      if (language) {
-        metaData[language] = response.items[0];
-      } else {
-        metaData[defaultLanguage] = response.items[0];
-      }
+        metaData = response.items[0];
       notifyChange();
     });
 };
 class Home {
   // Actions
   
-  provideMetaData(language, urlSlug) {
+  provideMetaData(urlSlug) {
     if (spinnerService.isShowing('apiSpinner') === false) {
       spinnerService.show('apiSpinner');
     }
-    fetchMetaData(language, urlSlug);
+    fetchMetaData(urlSlug);
   }
 
   // Methods

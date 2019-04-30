@@ -6,9 +6,9 @@ import HeroStore from '../Store/HeroStore'
 import LatestArticles from '../Components/LastesArticles';
 import Metadata from '../Components/Metadata'
 
-let getState = props => {
+let getState = () => {
   return {
-    metaData: HomeStore.getMetaData(props.language)
+    metaData: HomeStore.getMetaData()
   };
 };
 
@@ -22,7 +22,7 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     HomeStore.addChangeListener(this.onChange);
-    HomeStore.provideMetaData(this.props.language);
+    HomeStore.provideMetaData();
   }
 
   componentWillUnmount() {
@@ -30,15 +30,6 @@ class HomePage extends React.Component {
     HomeStore.unsubscribe();
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.language !== nextProps.language) {
-      HomeStore.provideMetaData(nextProps.language);
-      return {
-        language: nextProps.language
-      };
-    }
-    return null;
-  }
 
   onChange() {
     this.setState(getState(this.props));

@@ -12,7 +12,6 @@ class HeroStore extends Component {
   }
 
   componentDidMount() {
-    console.log("esto es this.props.clien",this.props.client)
     this.subscription = this.props.client
       .item(this.props.codeName)
       .languageParameter('es-ES')
@@ -34,7 +33,7 @@ class HeroStore extends Component {
     if (!this.state.hero) {
       return <Hero/>;
     }
-    console.log("estas son las props que vienen del Heromodl",this.state.hero)
+
     const { title, marketing_message } = this.state.hero;
     const teaserAlt = this.state.hero.image.assets[0].description;
     const teaserUrl = this.state.hero.image.assets[0].url;
